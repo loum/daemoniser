@@ -18,7 +18,7 @@ PYTHONPATH=.:../geosutils
 #
 # Note: for this to work you will need to import the test class into
 # the current namespace via "tests/__init__.py"
-TEST=daemoniser.tests.TestService
+TEST=daemoniser.tests:TestService
 
 sdist:
 	$(PY) setup.py sdist
