@@ -1,0 +1,5 @@
+--extra-index-url http://repo.corp.f7:8081/artifactory/pip-geospatial-local
+
+nose
+unittest2
+coverage

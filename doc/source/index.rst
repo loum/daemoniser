@@ -1,5 +1,5 @@
-Welcome to daemoniser's documentation!
-=====================================
+Daemoniser
+==========
 
 Contents:
 

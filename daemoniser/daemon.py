@@ -1,4 +1,4 @@
-"""The :mod:`oct.utils.daemon` module provides your Python program start
+"""The :mod:`geosutils.daemon` module provides your Python program start
 and stop functionality.  Furthermore, it supports process daemonisation so
 that your program could be run as a self-contained Linux service.
 
@@ -22,8 +22,8 @@ import signal
 import time
 import threading
 
-from oct.utils.log import log
-from oct.utils.files import (create_dir,
+from geosutils.log import log
+from geosutils.files import (create_dir,
                              remove_files)
 
 MAXFD = 1024
@@ -32,7 +32,7 @@ MAXFD = 1024
 class Daemon(object):
     """A generic daemon class.
 
-    :class:`oct.utils.Daemon` will prepare the daemon environment for
+    :class:`daemoniser.Daemon` will prepare the daemon environment for
     you but expects that you give it an entry point (:meth:`_start`) to
     the functional component of your process.
 
@@ -91,7 +91,7 @@ class Daemon(object):
 
     .. attribute:: inline
 
-        boolean flag to execute :meth:`oct.utils.daemon.Daemon._start`
+        boolean flag to execute :meth:`daemoniser.Daemon._start`
         method without daemonising
 
     """
@@ -128,7 +128,6 @@ class Daemon(object):
             ``IOError`` if *pidfile* is not writable.
 
         """
-        log.debug('inside daemoniser.Daemon __init__')
         self._pidfile = pidfile
         if self._pidfile is not None:
             create_dir(os.path.dirname(self._pidfile))
@@ -179,7 +178,7 @@ class Daemon(object):
         be invoked directly.  Instead, allow the context of the process
         invocation (either as a deamon or inline), to prepare the
         environment for you.  From within your class, all you need to do
-        is call the :meth:`oct.utils.Daemon.start` method.
+        is call the :meth:`daemoniser.Daemon.start` method.
 
         **Kwargs:**
             event (:mod:`threading.Event`): Internal semaphore that
@@ -203,7 +202,7 @@ class Daemon(object):
             to '/' once the process is forked.
 
         **Raises:**
-            :mod:`oct.utils.daemon.DaemonError` if *pidfile* contains
+            :mod:`daemoniser.DaemonError` if *pidfile* contains
             invalid content.
 
         """
@@ -279,7 +278,7 @@ class Daemon(object):
                 ``False`` -- failure
 
         **Raises:**
-            :mod:`oct.utils.daemon.DaemonError`, if:
+            :mod:`daemoniser.DaemonError`, if:
 
             * PID file has not been defined
             * PID file is not writable

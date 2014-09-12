@@ -8,7 +8,7 @@ __all__ = [
 import os
 from optparse import OptionParser
 
-from oct.utils.log import (log,
+from geosutils.log import (log,
                            set_console,
                            set_log_level)
 

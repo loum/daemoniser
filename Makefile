@@ -1,7 +1,10 @@
 PY=/usr/bin/python
-NOSE=/usr/bin/nosetests1.1 -s -v --with-xunit
+NOSE=/usr/bin/nosetests1.1 -s -v --with-xunit --with-coverage --cover-erase --cover-package daemoniser
+NOSE_ENV=.env/bin/nosetests -s -v --with-xunit --with-coverage --cover-erase --cover-package daemoniser
 GIT=/usr/bin/git
-PYTHONPATH=.
+COVERAGE=/usr/bin/coverage
+COVERAGE_ENV=.env/bin/coverage
+PYTHONPATH=.:../geosutils
 
 # The TEST variable can be set to allow you to control which tests
 # to run.  For example, if the current project has a test set defined at
@@ -15,7 +18,7 @@ PYTHONPATH=.
 #
 # Note: for this to work you will need to import the test class into
 # the current namespace via "tests/__init__.py"
-TEST=geoutils.image.tests:TestImage
+TEST=daemoniser.tests.TestService
 
 sdist:
 	$(PY) setup.py sdist
@@ -29,16 +32,25 @@ docs:
 build: docs rpm
 
 test:
-	$(NOSE) $(TEST)
+	PYTHONPATH=$(PYTHONPATH) $(NOSE) $(TEST)
+
+test_env:
+	$(NOSE_ENV) $(TEST)
+
+coverage: test
+	$(COVERAGE) xml -i
+
+coverage_env: test_env
+	$(COVERAGE_ENV) xml -i
 
 uninstall:
-	$(RPM) -e python-geoutils
+	$(RPM) -e python-daemoniser
 
 install:
-	$(RPM) -ivh dist/python-geoutils-?.??-?.noarch.rpm
+	$(RPM) -ivh dist/python-daemoniser-?.?.?-?.noarch.rpm
 
 upgrade:
-	$(RPM) -Uvh dist/python-geoutils-?.??-?.noarch.rpm
+	$(RPM) -Uvh dist/python-daemoniser-?.?.?-?.noarch.rpm
 
 clean:
 	$(GIT) clean -xdf
