@@ -65,7 +65,7 @@ FILES = find_data_files('doc/build/',
                         recursive=True,
                         target_dir='doc/build')
 
-setup(name='python-deamoniser',
+setup(name='python-daemoniser',
       version=VERSION,
       description='Daemonise your project',
       author='Lou Markovski',
