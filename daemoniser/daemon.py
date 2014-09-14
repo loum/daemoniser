@@ -146,7 +146,8 @@ class Daemon(object):
     def pidfile(self):
         return self._pidfile
 
-    def set_pidfile(self, value):
+    @pidfile.setter
+    def pidfile(self, value):
         self._pidfile = value
 
     @property
@@ -164,7 +165,8 @@ class Daemon(object):
     def inline(self):
         return self._inline
 
-    def set_inline(self, value):
+    @inline.setter
+    def inline(self, value):
         self._inline = value
 
     def _start(self):

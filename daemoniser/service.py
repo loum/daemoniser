@@ -245,7 +245,7 @@ class Service(object):
             self.dry = (self.options.dry is not None)
             self.batch = (self.options.batch is not None)
 
-    def launch_command(self, obj, script_name):
+    def launch_command(self, obj, script_name, inline=False):
         """Run :attr:`command` based on *obj* context.
 
         Supported command are start, stop and status.
@@ -259,15 +259,17 @@ class Service(object):
         """
         if self.command == 'start':
             msg = 'Starting %s' % script_name
-            if self.dry:
+            if self.dry or inline:
+                obj.inline = True
                 msg = '%s inline' % msg
             else:
                 msg = '%s as daemon' % msg
+
             if self.batch:
                 msg = '%s (batch mode)' % msg
 
             print('%s ...' % msg)
-            obj.set_inline(self.dry)
+
             if not obj.start():
                 print('Start aborted')
         elif self.command == 'stop':
