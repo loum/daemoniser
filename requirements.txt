@@ -1,6 +1,6 @@
 --extra-index-url http://repo.corp.f7:8081/artifactory/pip-geospatial-local
 
-python-geosutils==0.05
+python-geosutils==0.0.6
 nose
 unittest2
 coverage
