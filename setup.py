@@ -5,7 +5,7 @@ import os
 import glob
 import fnmatch
 import shutil
-from distutils.core import setup
+from setuptools import setup
 
 VERSION = '0.0.0'
 
@@ -71,6 +71,11 @@ setup(name='python-daemoniser',
       author='Lou Markovski',
       author_email='lou.markovski@gmail.com',
       url='https://www.triple20.com',
+      install_requires=['python-geosutils==0.0.6',
+                        'nose==1.1.2',
+                        'unittest2==0.5.1',
+                        'sphinx==1.0.8',
+                        'coverage==3.7'],
       packages=['daemoniser'],
       package_dir={'daemoniser': 'daemoniser'},
       data_files=FILES)
