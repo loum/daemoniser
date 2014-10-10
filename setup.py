@@ -63,7 +63,7 @@ FILES = find_data_files('doc/build/',
                         '*.js',
                         '*.css',
                         recursive=True,
-                        target_dir='doc/build')
+                        target_dir='doc/build/daemoniser')
 
 setup(name='python-daemoniser',
       version=VERSION,
