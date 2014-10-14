@@ -215,9 +215,6 @@ class Service(object):
 
         cmd = command
         if command is None:
-            if len(args) != 1:
-                self.parser.error("incorrect number of arguments")
-
             cmd = (args.pop(0))
 
             if (cmd not in self.supported_commands):
@@ -227,6 +224,9 @@ class Service(object):
                (options.dry or options.batch)):
                 self.parser.error('invalid option(s) with command "%s"' %
                                   cmd)
+
+        if len(args):
+            self.parser.error("unknown arguments")
 
         if cmd == 'status':
             set_console()

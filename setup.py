@@ -57,14 +57,6 @@ def find_data_files(srcdir, *wildcards, **kw):
 
     return file_list
 
-FILES = find_data_files('doc/build/',
-                        '*.html',
-                        '*.png',
-                        '*.js',
-                        '*.css',
-                        recursive=True,
-                        target_dir='doc/build')
-
 setup(name='python-daemoniser',
       version=VERSION,
       description='Daemonise your project',
@@ -76,6 +68,4 @@ setup(name='python-daemoniser',
                         'unittest2==0.5.1',
                         'sphinx==1.0.8',
                         'coverage==3.7'],
-      packages=['daemoniser'],
-      package_dir={'daemoniser': 'daemoniser'},
-      data_files=FILES)
+      packages=['daemoniser'])
