@@ -7,7 +7,7 @@ import fnmatch
 import shutil
 from setuptools import setup
 
-VERSION = '0.0.0'
+VERSION = '0.0.1'
 
 
 def opj(*args):
@@ -63,7 +63,7 @@ setup(name='python-daemoniser',
       author='Lou Markovski',
       author_email='lou.markovski@gmail.com',
       url='https://www.triple20.com',
-      install_requires=['python-geosutils==0.0.6',
+      install_requires=['python-geosutils==0.0.7',
                         'nose==1.1.2',
                         'unittest2==0.5.1',
                         'sphinx==1.0.8',
