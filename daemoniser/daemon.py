@@ -1,4 +1,4 @@
-"""The :mod:`geosutils.daemon` module provides your Python program start
+"""The :mod:`daemoniser.daemon` module provides your Python program start
 and stop functionality.  Furthermore, it supports process daemonisation so
 that your program could be run as a self-contained Linux service.
 
@@ -22,9 +22,9 @@ import signal
 import time
 import threading
 
-from geosutils.log import log
-from geosutils.files import (create_dir,
-                             remove_files)
+from logga.log import log
+from filer.files import (create_dir,
+                         remove_files)
 
 MAXFD = 1024
 

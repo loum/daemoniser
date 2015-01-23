@@ -4,7 +4,7 @@ NOSE_ENV=.env/bin/nosetests -s -v --with-xunit --with-coverage --cover-erase --c
 GIT=/usr/bin/git
 COVERAGE=/usr/bin/coverage
 COVERAGE_ENV=.env/bin/coverage
-PYTHONPATH=.:../geosutils
+PYTHONPATH=.:../logga:../filer
 
 # The TEST variable can be set to allow you to control which tests
 # to run.  For example, if the current project has a test set defined at
